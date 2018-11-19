@@ -15,30 +15,34 @@ import java.util.logging.Logger;
  * @author usuario
  */
 public class Conexion { 
-   private String url="jdbc:mysql://localhost/prueba";
-   private String usuario="root";
-   private String password="";
-   private Connection con = null;
-
-    public Conexion() {
+  private Connection con;
+    private String url = "jdbc:mariadb://localhost/inmobiliaria";
+    private String usuario = "root";
+    private String contraseña = "";
+    private String driver = "org.mariadb.jdbc.Driver";
+    
+    
+   public Conexion(){
         try {
-            Class.forName("org.mariadb.jdbc.Driver");
+            con = null;
             
-        } catch (ClassNotFoundException ex) {
+            Class.forName(driver);
+            con = DriverManager.getConnection(url, usuario, contraseña);
+            if(con != null){
+                System.out.println("Conexion Exitosa");
+            }else{
+                System.out.println("Conexion Fallida");
+            }} catch (ClassNotFoundException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        
-    }   
-    public Connection getConexion (){
-    try {
-        if(con == null){ 
-            //creamos la conexion
-        con = DriverManager.getConnection(url + "?useLegacyDatetimeCode=false&serverTimezone=UTC" + "&user="
-                + usuario + "&password=" + password);
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   }
+
+    public Connection getCon() {
+        return con;
     }
-    }  catch (SQLException ex) {
-        Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
-    }
-    return con;
+    
+    
 }
-}
+
