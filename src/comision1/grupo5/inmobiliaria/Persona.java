@@ -10,55 +10,63 @@ package comision1.grupo5.inmobiliaria;
  * @author usuario
  */
 public class Persona {
-   private String nombreCompleto;
-   private int dni;
-   private String celular;
-   private int id_Persona;
-
-    public Persona(String nombreCompleto, int dni, String celular) {
-        this.nombreCompleto = nombreCompleto;
+   private String nombre;
+    private int dni;
+    private int celular;
+    private int id_persona;
+//prueba de agregar cambios
+    
+    public Persona(String nombre, int Dni, int celular, int id_persona) {
+        this.nombre= nombre;
+        this.dni = Dni;
+        this.celular = celular;
+        this.id_persona = id_persona;
+    }
+    
+    public Persona(String nombre, int dni, int celular) {
+        this.nombre = nombre;
         this.dni = dni;
         this.celular = celular;
+       
     }
 
-    public Persona(String nombreCompleto, int dni, String celular, int id_Persona) {
-        this.nombreCompleto = nombreCompleto;
-        this.dni = dni;
-        this.celular = celular;
-        this.id_Persona = id_Persona;
+    Persona() {
+        
     }
 
-    public String getNombreCompleto() {
-        return nombreCompleto;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombreCompleto(String nombreCompleto) {
-        this.nombreCompleto = nombreCompleto;
-    }
-
-    public int getDni() {
+    public int getdni() {
         return dni;
+    }
+
+    public int getCelular() {
+        return celular;
+    }
+
+    public int getId_persona() {
+        return id_persona;
+    }
+
+    public void setNombre(String nombreCompleto) {
+        this.nombre = nombre;
     }
 
     public void setDni(int dni) {
         this.dni = dni;
     }
 
-    public String getCelular() {
-        return celular;
-    }
-
-    public void setCelular(String celular) {
+    public void setCelular(int celular) {
         this.celular = celular;
     }
 
-    public int getId() {
-        return id_Persona;
+    public void setId_persona(int id_persona) {
+        this.id_persona = id_persona;
     }
 
-    public void setId(int id) {
-        this.id_Persona = id;
-    }
-   
-   
+    
+    
 }
+
