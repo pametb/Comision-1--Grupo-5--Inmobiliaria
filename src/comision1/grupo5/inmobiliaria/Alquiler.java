@@ -6,58 +6,39 @@
 package comision1.grupo5.inmobiliaria;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 /**
  *
  * @author usuario
  */
 public class Alquiler {
-   private int id_Alquiler;
-   private Date fechaInicio;
-   private Date fechaFin;
-   private double costo;
-   private Persona inquilina;   
-   private Inmueble propiedad;
+        private LocalDate fechaDeInicio;
+    private double costo;
+    private LocalDate finDeContrato;
+    private int id_Alquiler;
 
-    public Alquiler(Date fechaInicio, Date fechaFin, double costo, Persona inquilina, Inmueble propiedad) {
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
+    public Alquiler(LocalDate fechaDeInicio, double costo, LocalDate finDeContrato, int id_Alquiler) {
+        this.fechaDeInicio = fechaDeInicio;
         this.costo = costo;
-        this.inquilina = inquilina;
-        this.propiedad = propiedad;
-    }
-
-    public Alquiler(int id_Alquiler, Date fechaInicio, Date fechaFin, double costo, Persona inquilina, Inmueble propiedad) {
-        this.id_Alquiler = id_Alquiler;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.costo = costo;
-        this.inquilina = inquilina;
-        this.propiedad = propiedad;
-    }
-
-    public int getId_Alquiler() {
-        return id_Alquiler;
-    }
-
-    public void setId_Alquiler(int id_Alquiler) {
+        this.finDeContrato = finDeContrato;
         this.id_Alquiler = id_Alquiler;
     }
 
-    public Date getFechaInicio() {
-        return fechaInicio;
+     public Alquiler(LocalDate fechaDeInicio, double costo, LocalDate finDeContrato) {
+        this.fechaDeInicio = fechaDeInicio;
+        this.costo = costo;
+        this.finDeContrato = finDeContrato;
+        
+    }
+    
+    
+    public LocalDate getFechaDeInicio() {
+        return fechaDeInicio;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
-
-    public Date getFechaFin() {
-        return fechaFin;
-    }
-
-    public void setFechaFin(Date fechaFin) {
-        this.fechaFin = fechaFin;
+    public void setFechaDeInicio(LocalDate fechaDeInicio) {
+        this.fechaDeInicio = fechaDeInicio;
     }
 
     public double getCosto() {
@@ -68,22 +49,21 @@ public class Alquiler {
         this.costo = costo;
     }
 
-    public Persona getInquilina() {
-        return inquilina;
+    public LocalDate getFinDeContrato() {
+        return finDeContrato;
     }
 
-    public void setInquilina(Persona inquilina) {
-        this.inquilina = inquilina;
+    public void setFinDeContrato(LocalDate finDeContrato) {
+        this.finDeContrato = finDeContrato;
     }
 
-    public Inmueble getPropiedad() {
-        return propiedad;
+    public int getId_Alquiler() {
+        return id_Alquiler;
     }
 
-    public void setPropiedad(Inmueble propiedad) {
-        this.propiedad = propiedad;
+    public void setId_Alquiler(int id_Alquiler) {
+        this.id_Alquiler = id_Alquiler;
     }
-   
-   
-   
 }
+   // realice un cambio en Alquiler, soy tobias.
+
