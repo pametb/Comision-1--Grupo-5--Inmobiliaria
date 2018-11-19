@@ -10,38 +10,30 @@ package comision1.grupo5.inmobiliaria;
  * @author usuario
  */
 public class Inmueble {
-   private int id_Inmueble;
-   private String direccion;
-   private int cantAmbientes;
-   private double precio;
-   private boolean disponibilidad;
-   private Persona id_PersonaDueño;
+  private String direccion;
+    private int cantDeAmb;
+    private double costo;
+    private boolean disponible;
+    private int id_inmueble;
+    private int id_Persona_dueña;
 
-    public Inmueble(int id_Inmueble, String direccion, int cantAmbientes, double precio, boolean disponibilidad, Persona id_PersonaDueño) {
-        this.id_Inmueble = id_Inmueble;
+    public Inmueble(String direccion, int cantDeAmb, double costo, boolean disponible, int id_inmueble) {
         this.direccion = direccion;
-        this.cantAmbientes = cantAmbientes;
-        this.precio = precio;
-        this.disponibilidad = disponibilidad;
-        this.id_PersonaDueño = id_PersonaDueño;
+        this.cantDeAmb = cantDeAmb;
+        this.costo = costo;
+        this.disponible = disponible;
+        this.id_inmueble = id_inmueble;
     }
 
-    public Inmueble(String direccion, int cantAmbientes, double precio, boolean disponibilidad, Persona id_PersonaDueño) {
+    public Inmueble(String direccion, int cantDeAmb, double costo, boolean disponible) {
         this.direccion = direccion;
-        this.cantAmbientes = cantAmbientes;
-        this.precio = precio;
-        this.disponibilidad = disponibilidad;
-        this.id_PersonaDueño = id_PersonaDueño;
+        this.cantDeAmb = cantDeAmb;
+        this.costo = costo;
+        this.disponible = disponible;
+        
     }
-
-    public int getId_Inmueble() {
-        return id_Inmueble;
-    }
-
-    public void setId_Inmueble(int id_Inmueble) {
-        this.id_Inmueble = id_Inmueble;
-    }
-
+    
+    
     public String getDireccion() {
         return direccion;
     }
@@ -50,38 +42,28 @@ public class Inmueble {
         this.direccion = direccion;
     }
 
-    public int getCantAmbientes() {
-        return cantAmbientes;
+    public int getCantDeAmb() {
+        return cantDeAmb;
     }
 
-    public void setCantAmbientes(int cantAmbientes) {
-        this.cantAmbientes = cantAmbientes;
+    public void setCantDeAmb(int cantDeAmb) {
+        this.cantDeAmb = cantDeAmb;
     }
 
-    public double getPrecio() {
-        return precio;
+    public double getCosto() {
+        return costo;
     }
 
-    public void setPrecio(double precio) {
-        this.precio = precio;
+    public void setCosto(double costo) {
+        this.costo = costo;
     }
 
-    public boolean isDisponibilidad() {
-        return disponibilidad;
+    public boolean isDisponible() {
+        return disponible;
     }
 
-    public void setDisponibilidad(boolean disponibilidad) {
-        this.disponibilidad = disponibilidad;
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
     }
-
-    public Persona getId_PersonaDueño() {
-        return id_PersonaDueño;
-    }
-
-    public void setId_PersonaDueño(Persona id_PersonaDueño) {
-        this.id_PersonaDueño = id_PersonaDueño;
-    }
-   
-   
-   
+    
 }
