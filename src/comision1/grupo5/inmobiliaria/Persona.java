@@ -50,7 +50,7 @@ public class Persona {
         return id_persona;
     }
 
-    public void setNombre(String nombreCompleto) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 

@@ -5,7 +5,7 @@
  */
 package comision1.grupo5.inmobiliaria;
 
-import java.sql.Date;
+
 import java.time.LocalDate;
 
 /**
@@ -13,7 +13,7 @@ import java.time.LocalDate;
  * @author usuario
  */
 public class Alquiler {
-        private LocalDate fechaDeInicio;
+    private LocalDate fechaDeInicio;
     private double costo;
     private LocalDate finDeContrato;
     private int id_Alquiler;
@@ -32,11 +32,10 @@ public class Alquiler {
         
     }
     
-    
-    public LocalDate getFechaDeInicio() {
+     public LocalDate getFechaDeInicio() {
         return fechaDeInicio;
-    }
-
+     }
+     
     public void setFechaDeInicio(LocalDate fechaDeInicio) {
         this.fechaDeInicio = fechaDeInicio;
     }
