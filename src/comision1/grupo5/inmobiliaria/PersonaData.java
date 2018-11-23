@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -94,6 +96,30 @@ public class PersonaData {
         }
        return persona;
    } 
-    
-}
+     public List<Persona> obtenerPersona(){
+        List<Persona> personas = new ArrayList<Persona>();
+            
 
+        try {
+            String sql = "SELECT * FROM persona;";
+            PreparedStatement statement = conect.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+            Persona persona;
+            while(resultSet.next()){
+                persona = new Persona();
+                persona.setId_persona(resultSet.getInt("id"));
+                persona.setNombre(resultSet.getString("nombre"));
+                persona.setDni(resultSet.getInt("dni"));
+                persona.setCelular(resultSet.getInt("celular"));
+
+                personas.add(persona);
+            }      
+            statement.close();
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener la perona: " + ex.getMessage());
+}
+        return null;
+     
+     } 
+     
+}

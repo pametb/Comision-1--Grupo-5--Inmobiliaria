@@ -15,7 +15,10 @@ public class Comision1Grupo5Inmobiliaria {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+       Persona persona1 = new Persona("Juan", 4363646, 26645764);
+       Conexion conexion= new Conexion();
+       
+       
     }
     
 }

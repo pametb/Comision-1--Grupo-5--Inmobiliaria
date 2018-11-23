@@ -12,15 +12,16 @@ package comision1.grupo5.inmobiliaria;
 public class Inmueble {
   private String direccion;
     private int cantDeAmb;
-    private double costo;
+    private double precio;
     private boolean disponible;
     private int id_inmueble;
     private int id_Persona_dueña;
+    
 
     public Inmueble(String direccion, int cantDeAmb, double costo, boolean disponible, int id_inmueble) {
         this.direccion = direccion;
         this.cantDeAmb = cantDeAmb;
-        this.costo = costo;
+        this.precio = costo;
         this.disponible = disponible;
         this.id_inmueble = id_inmueble;
     }
@@ -28,7 +29,7 @@ public class Inmueble {
     public Inmueble(String direccion, int cantDeAmb, double costo, boolean disponible) {
         this.direccion = direccion;
         this.cantDeAmb = cantDeAmb;
-        this.costo = costo;
+        this.precio = costo;
         this.disponible = disponible;
         
     }
@@ -50,12 +51,12 @@ public class Inmueble {
         this.cantDeAmb = cantDeAmb;
     }
 
-    public double getCosto() {
-        return costo;
+    public double getPrecio() {
+        return precio;
     }
 
-    public void setCosto(double costo) {
-        this.costo = costo;
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 
     public boolean isDisponible() {
