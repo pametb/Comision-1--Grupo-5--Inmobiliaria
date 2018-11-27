@@ -74,12 +74,13 @@ public void borrarInmueble(int id){
         
     }
     
-    public Inmueble buscarInmueble(Double costo, int cantidad_ambiente){
+    public Inmueble buscarInmueble(Double costo, int cantidadDeambiente){
        Inmueble inmueble = null;
         try {
             String sql = "SELECT * FROM inmueble WHERE precio = ? AND cantidad_de_ambiente = ? ";
             PreparedStatement ps = conect.prepareStatement(sql);
             ps.setDouble(1, costo);
+            ps.setInt(2,  cantidadDeambiente);
             ResultSet resultset = ps.executeQuery();
             while(resultset.next()){
              inmueble = new Inmueble();
