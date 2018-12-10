@@ -28,14 +28,14 @@ public class InmuebleData {
     public void guardarInmueble(Inmueble inmueble){
         
         try {
-            String sql = "INSERT INTO inmueble (direccion, cantidad_de_ambiente, precio, disponible) VALUES (?, ?, ?, ?);";
+            String sql = "INSERT INTO inmueble (direccion, cantidad_de_ambiente, precio, disponible, id_persona_dueña) VALUES (?, ?, ?, ?, ?);";
             
             PreparedStatement ps = conect.prepareStatement(sql);
             ps.setString(1, inmueble.getDireccion());
             ps.setInt(2, inmueble.getCantidad_de_ambiente());
             ps.setDouble(3, inmueble.getPrecio());
             ps.setBoolean(4, inmueble.isDisponible());
-           
+            ps.setInt(5, inmueble.getPersona().getId_persona());
             int filas = ps.executeUpdate();
             System.out.println("Filas Agregadas: "+filas);
         } catch (SQLException ex) {
@@ -58,12 +58,14 @@ public void borrarInmueble(int id){
     
     public void actualizarInmueble(Inmueble inmueble){
         try {
-            String sql = "UPDATE inmueble SET direccion = ?, cantidad_de_ambientes = ?, precio = ?, disponible = ?;";
+            String sql = "UPDATE inmueble SET direccion = ?, cantidad_de_ambientes = ?, precio = ?, disponible = ? = ? WHERE id_inmueble = ?;";
             PreparedStatement ps = conect.prepareStatement(sql);
             ps.setString(1, inmueble.getDireccion());
             ps.setInt(2, inmueble.getCantidad_de_ambiente());
             ps.setDouble(3, inmueble.getPrecio());
             ps.setBoolean(4, inmueble.isDisponible());
+            
+            ps.setInt(6, inmueble.getId_inmueble());
             int filas = ps.executeUpdate();
             System.out.println("Fila Actualizada: "+filas);
             ps.close();
@@ -76,6 +78,7 @@ public void borrarInmueble(int id){
     
     public Inmueble buscarInmueble(Double costo, int cantidadDeambiente){
        Inmueble inmueble = null;
+      
         try {
             String sql = "SELECT * FROM inmueble WHERE precio = ? AND cantidad_de_ambiente = ? ";
             PreparedStatement ps = conect.prepareStatement(sql);
@@ -89,7 +92,7 @@ public void borrarInmueble(int id){
              inmueble.setDireccion(resultset.getString("direccion"));
              inmueble.setPrecio(resultset.getDouble("precio"));
              inmueble.setDisponible(resultset.getBoolean("disponible"));
-             inmueble.setId_persona_dueña(resultset.getInt("id_persona_dueña"));
+             inmueble.getPersona().setId_persona(resultset.getInt("id_persona_dueña"));
              
              
             
@@ -117,7 +120,7 @@ public void borrarInmueble(int id){
               inmueble.setCantidad_de_ambiente(resultset.getInt("cantidad_de_ambiente"));
               inmueble.setPrecio(resultset.getInt("precio"));
               inmueble.setDisponible(resultset.getBoolean("disponible"));
-              inmueble.setId_persona_dueña(resultset.getInt("id_persona_dueña"));
+              inmueble.getPersona().setId_persona(resultset.getInt("id_persona_dueña"));
               inmuebles.add(inmueble);
             }
            ps.close();
