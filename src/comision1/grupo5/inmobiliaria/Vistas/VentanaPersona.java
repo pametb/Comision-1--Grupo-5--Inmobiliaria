@@ -1,6 +1,9 @@
 
-package comision1.grupo5.inmobiliaria;
+package comision1.grupo5.inmobiliaria.Vistas;
 
+import comision1.grupo5.inmobiliaria.Clases.Conexion;
+import comision1.grupo5.inmobiliaria.Clases.Persona;
+import comision1.grupo5.inmobiliaria.Clases.PersonaData;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;

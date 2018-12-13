@@ -3,16 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package comision1.grupo5.inmobiliaria;
+package comision1.grupo5.inmobiliaria.Clases;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,7 +37,10 @@ public class PersonaData {
             ps.setInt(3, persona.getCelular());
             int filas = ps.executeUpdate();
             
-            System.out.println("Filas Agregadas: "+filas);
+            
+            if(filas > 0){
+                JOptionPane.showMessageDialog(null, "Fila Agregada "+filas);
+            }
             ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(PersonaData.class.getName()).log(Level.SEVERE, null, ex);
@@ -49,7 +54,10 @@ public class PersonaData {
             ps.setInt(1, id);
             int filas = ps.executeUpdate();
             
-            System.out.println("Filas Afectadas: "+ filas);
+            
+            if(filas > 0){
+                JOptionPane.showMessageDialog(null, "Fila Afectada "+filas);
+            }
             
             ps.close();
         } catch (SQLException ex) {
@@ -61,14 +69,17 @@ public class PersonaData {
     
     public void actualizarPersona(Persona persona){
         try {
-            String sql = "UPDATE persona SET nombre = ?, dni = ?, celular = ? ;";
-            PreparedStatement ps = conect.prepareStatement(sql);
+            String sql = "UPDATE persona SET nombre = ?, dni = ?, celular = ? WHERE id_persona = ?;";
+            PreparedStatement ps = conect.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, persona.getNombre());
             ps.setInt(2, persona.getdni());
             ps.setInt(3, persona.getCelular());
+            ps.setInt(4, persona.getId_persona());
             
-            ps.executeUpdate();
-            
+            int filas = ps.executeUpdate();
+            if(filas > 0){
+                JOptionPane.showMessageDialog(null, "Fila Actualizada "+filas);
+            }
             ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(PersonaData.class.getName()).log(Level.SEVERE, null, ex);
@@ -90,6 +101,7 @@ public class PersonaData {
                 persona.setCelular(resultset.getInt("celular"));
                 
              }
+             JOptionPane.showMessageDialog(null, "Busqueda Realizada");
              ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(PersonaData.class.getName()).log(Level.SEVERE, null, ex);
@@ -118,7 +130,7 @@ public class PersonaData {
         } catch (SQLException ex) {
             System.out.println("Error al obtener la perona: " + ex.getMessage());
 }
-        return null;
+        return personas;
      
      } 
      

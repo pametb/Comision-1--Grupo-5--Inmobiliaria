@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package comision1.grupo5.inmobiliaria;
+package comision1.grupo5.inmobiliaria.Clases;
 
 /**
  *
@@ -11,27 +11,40 @@ package comision1.grupo5.inmobiliaria;
  */
 public class Inmueble {
   private String direccion;
-    private int cantDeAmb;
+    private int cantidad_de_ambiente;
     private double precio;
     private boolean disponible;
     private int id_inmueble;
-    private int id_Persona_dueña;
+    private Persona persona;
     
 
-    public Inmueble(String direccion, int cantDeAmb, double costo, boolean disponible, int id_inmueble) {
+    public Inmueble(String direccion, int cantidad_de_ambiente, double costo, boolean disponible, int id_inmueble, Persona persona) {
         this.direccion = direccion;
-        this.cantDeAmb = cantDeAmb;
+        this.cantidad_de_ambiente = cantidad_de_ambiente;
         this.precio = costo;
         this.disponible = disponible;
         this.id_inmueble = id_inmueble;
+        this.persona =  persona;
     }
 
-    public Inmueble(String direccion, int cantDeAmb, double costo, boolean disponible) {
+    public Inmueble(String direccion, int cantidad_de_ambiente, double costo, boolean disponible ) {
         this.direccion = direccion;
-        this.cantDeAmb = cantDeAmb;
+        this.cantidad_de_ambiente = cantidad_de_ambiente;
         this.precio = costo;
         this.disponible = disponible;
         
+    }
+
+    Inmueble() {
+        
+    }
+
+    public int getId_inmueble() {
+        return id_inmueble;
+    }
+
+    public Persona getPersona() {
+        return persona;
     }
     
     
@@ -43,17 +56,26 @@ public class Inmueble {
         this.direccion = direccion;
     }
 
-    public int getCantDeAmb() {
-        return cantDeAmb;
+    public int getCantidad_de_ambiente() {
+        return cantidad_de_ambiente;
     }
 
-    public void setCantDeAmb(int cantDeAmb) {
-        this.cantDeAmb = cantDeAmb;
+    public void setCantidad_de_ambiente(int cantDeAmb) {
+        this.cantidad_de_ambiente = cantDeAmb;
     }
 
     public double getPrecio() {
         return precio;
     }
+
+    public void setId_inmueble(int id_inmueble) {
+        this.id_inmueble = id_inmueble;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
+    }
+
 
     public void setPrecio(double precio) {
         this.precio = precio;

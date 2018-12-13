@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package comision1.grupo5.inmobiliaria;
+package comision1.grupo5.inmobiliaria.Clases;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 /**
  *
  * @author usuario
@@ -29,9 +30,9 @@ public class Conexion {
             Class.forName(driver);
             con = DriverManager.getConnection(url, usuario, contraseña);
             if(con != null){
-                System.out.println("Conexion Exitosa");
+                JOptionPane.showMessageDialog(null, "Conexion Establecida");
             }else{
-                System.out.println("Conexion Fallida");
+                JOptionPane.showMessageDialog(null, "Conexion Fallida");
             }} catch (ClassNotFoundException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

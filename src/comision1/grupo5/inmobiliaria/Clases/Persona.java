@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package comision1.grupo5.inmobiliaria;
+package comision1.grupo5.inmobiliaria.Clases;
 
 /**
  *
@@ -15,6 +15,7 @@ public class Persona {
     private int celular;
     private int id_persona;
 //prueba de agregar cambios
+   
     
     public Persona(String nombre, int Dni, int celular, int id_persona) {
         this.nombre= nombre;
@@ -30,9 +31,11 @@ public class Persona {
        
     }
 
-    Persona() {
+   public  Persona() {
         
     }
+
+    
 
     public String getNombre() {
         return nombre;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package comision1.grupo5.inmobiliaria;
+package comision1.grupo5.inmobiliaria.Clases;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -27,14 +27,16 @@ public class AlquilerData {
     public AlquilerData(Conexion conectar) {
         conect = conectar.getCon();
     }
-    public void guardarAlquiler(Alquiler Alquiler){
+    public void guardarAlquiler(Alquiler alquiler){
         try {
-            String sql = "INSERT INTO alquiler (precio,fecha_inicio,fechafin) VALUES (?, ?, ?);";
+            String sql = "INSERT INTO alquiler (precio,fecha_inicio,fechafin,id_persona, id_inmueble) VALUES (?, ?, ?, ?, ?);";
             PreparedStatement ps = conect.prepareStatement(sql);
             
-            ps.setDouble(1, Alquiler.getPrecio());
-            ps.setDate(2, Date.valueOf(Alquiler.getFechaDeInicio()));
-            ps.setDate(3, Date.valueOf(Alquiler.getFinDeContrato()));
+            ps.setDouble(1, alquiler.getPrecio());
+            ps.setDate(2, Date.valueOf(alquiler.getFechaDeInicio()));
+            ps.setDate(3, Date.valueOf(alquiler.getFechaFin()));
+            ps.setInt(4, alquiler.getPersona().getId_persona());
+            ps.setInt(5, alquiler.getInmueble().getId_inmueble());
             
             int filas = ps.executeUpdate();
             
@@ -58,12 +60,12 @@ public class AlquilerData {
          }}
      public void actualizarAlquiler(Alquiler alquiler){
         try {
-            String sql = "UPDATE alquiler SET precio = ?, fecha_inicio = ?, fechaFin = ?;";
+            String sql = "UPDATE alquiler SET precio = ?, fecha_inicio = ?, fechaFin = ? WHERE id_alquiler = ?;";
             PreparedStatement ps = conect.prepareStatement(sql);
             ps.setDouble(1, alquiler.getPrecio());
             ps.setDate(2, Date.valueOf(alquiler.getFechaDeInicio()));
-            ps.setDate(3, Date.valueOf(alquiler.getFinDeContrato()));
-            
+            ps.setDate(3, Date.valueOf(alquiler.getFechaFin()));
+            ps.setInt(4, alquiler.getId_Alquiler());
             
            int filas =  ps.executeUpdate();
             System.out.print("Filas Actualizadas: "+filas);
@@ -83,14 +85,16 @@ public class AlquilerData {
             PreparedStatement statement = conect.prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
             Alquiler alquiler;
+            
+            
             while(resultSet.next()){
                 alquiler = new Alquiler();
-                alquiler.setId_persona(resultSet.getInt("id_perosna"));
+                alquiler.getPersona().setId_persona(resultSet.getInt("id_persona"));
                 alquiler.setId_Alquiler(resultSet.getInt("id_alquiler"));
-               alquiler.setId_inmueble(resultSet.getInt("id_inmueble"));
+               alquiler.getInmueble().setId_inmueble(resultSet.getInt("id_inmueble"));
                 alquiler.setPrecio(resultSet.getDouble("precio"));
                 alquiler.setFechaDeInicio(resultSet.getDate("fecha_inicio").toLocalDate());
-                alquiler.setFinDeContrato(resultSet.getDate("fechaFin").toLocalDate());
+                alquiler.setFechaFin(resultSet.getDate("fechaFin").toLocalDate());
 
                 alquileres.add(alquiler);
             }      
@@ -102,4 +106,6 @@ public class AlquilerData {
         return alquileres;
      
      }
+       
+       
 }
