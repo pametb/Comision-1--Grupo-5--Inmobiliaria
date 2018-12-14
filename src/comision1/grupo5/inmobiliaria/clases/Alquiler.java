@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package comision1.grupo5.inmobiliaria;
+package comision1.grupo5.inmobiliaria.clases;
 
 
 import java.time.LocalDate;
@@ -17,9 +17,9 @@ public class Alquiler {
     private double precio;
     private LocalDate finDeContrato;
     private int id_Alquiler;
-    private int id_persona;
-    private int id_inmueble;
- Alquiler (){}
+    private Inmueble inmueble;
+    private Persona persona;
+ 
     public Alquiler(LocalDate fechaDeInicio, double costo, LocalDate finDeContrato, int id_Alquiler) {
         this.fechaDeInicio = fechaDeInicio;
         this.precio = costo;
@@ -27,10 +27,16 @@ public class Alquiler {
         this.id_Alquiler = id_Alquiler;
     }
 
-     public Alquiler(LocalDate fechaDeInicio, double costo, LocalDate finDeContrato) {
-        this.fechaDeInicio = fechaDeInicio;
+     public Alquiler(LocalDate fechaDeInicio, double costo, LocalDate finDeContrato, Inmueble inmueble, Persona persona) {
+       this.inmueble= inmueble;
+       this.persona=persona;
+         this.fechaDeInicio = fechaDeInicio;
         this.precio = costo;
         this.finDeContrato = finDeContrato;
+        
+    }
+
+    public Alquiler(){
         
     }
     
@@ -66,21 +72,28 @@ public class Alquiler {
         this.id_Alquiler = id_Alquiler;
     }
 
-    public int getId_persona() {
-        return id_persona;
+    public Inmueble getInmueble() {
+        return inmueble;
     }
 
-    public void setId_persona(int id_persona) {
-        this.id_persona = id_persona;
+    public void setInmueble(Inmueble inmueble) {
+        this.inmueble = inmueble;
     }
 
-    public int getId_inmueble() {
-        return id_inmueble;
+    public Persona getPersona() {
+        return persona;
     }
 
-    public void setId_inmueble(int id_inmueble) {
-        this.id_inmueble = id_inmueble;
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
+
+    @Override
+    public String toString() {
+        return  fechaDeInicio+" "+precio+" "+finDeContrato+" "+id_Alquiler+" "+persona+" "+inmueble;//To change body of generated methods, choose Tools | Templates.
+    }
+
+  
     
 }
    // realice un cambio en Alquiler, soy tobias.

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package comision1.grupo5.inmobiliaria;
+package comision1.grupo5.inmobiliaria.clases;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,10 +16,14 @@ import java.util.logging.Logger;
  */
 public class Conexion { 
   private Connection con;
-    private String url = "jdbc:mariadb://localhost/inmobiliaria";
+    private String url = "jdbc:mariadb://localhost/inmobiliariag5";
     private String usuario = "root";
     private String contraseña = "";
     private String driver = "org.mariadb.jdbc.Driver";
+
+    public Conexion(Connection con) {
+        this.con = con;
+    }
     
     
    public Conexion(){

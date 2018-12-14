@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package comision1.grupo5.inmobiliaria;
+package comision1.grupo5.inmobiliaria.clases;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -28,18 +29,22 @@ public class PersonaData {
     public void guardarPersona(Persona persona){
         try {
             String sql = "INSERT INTO persona (nombre, dni, celular) VALUES (?, ?, ?);";
-            PreparedStatement ps = conect.prepareStatement(sql);
+            PreparedStatement ps = conect.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
             
             ps.setString(1, persona.getNombre());
             ps.setInt(2, persona.getdni());
             ps.setInt(3, persona.getCelular());
             int filas = ps.executeUpdate();
-            
+            ResultSet rs = ps.getGeneratedKeys();
+
+            if (rs.next()) {
+                persona.setId_persona(rs.getInt(1));}
             System.out.println("Filas Agregadas: "+filas);
             ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(PersonaData.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
     
     public void borrarPersona(int id){
@@ -49,7 +54,7 @@ public class PersonaData {
             ps.setInt(1, id);
             int filas = ps.executeUpdate();
             
-            System.out.println("Filas Afectadas: "+ filas);
+            System.out.println("Filas Borradas: "+ filas);
             
             ps.close();
         } catch (SQLException ex) {
@@ -68,6 +73,7 @@ public class PersonaData {
             ps.setInt(3, persona.getCelular());
             
             ps.executeUpdate();
+             
             
             ps.close();
         } catch (SQLException ex) {
@@ -107,7 +113,7 @@ public class PersonaData {
             Persona persona;
             while(resultSet.next()){
                 persona = new Persona();
-                persona.setId_persona(resultSet.getInt("id"));
+                persona.setId_persona(resultSet.getInt("id_persona"));
                 persona.setNombre(resultSet.getString("nombre"));
                 persona.setDni(resultSet.getInt("dni"));
                 persona.setCelular(resultSet.getInt("celular"));
@@ -118,8 +124,31 @@ public class PersonaData {
         } catch (SQLException ex) {
             System.out.println("Error al obtener la perona: " + ex.getMessage());
 }
-        return null;
+        return personas;
      
      } 
+     public Persona obtenerPersona(int id) throws SQLException{
+          Persona persona=null;
+          String sql = "SELECT * FROM persona WHERE id_persona =?;";
+
+            PreparedStatement statement = conect.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+           statement.setInt(1, id);
+            ResultSet resultset= statement.executeQuery();
+           
+           while (resultset.next()){
+           persona = new Persona ();
+          
+                persona.setId_persona(resultset.getInt("id_persona"));
+                persona.setNombre(resultset.getString("nombre"));
+                persona.setDni(resultset.getInt("dni"));
+                persona.setCelular(resultset.getInt("celular"));
+
+
+           }
+            statement.close();
+            return persona;
+        }
+        
+     }
      
-}
+

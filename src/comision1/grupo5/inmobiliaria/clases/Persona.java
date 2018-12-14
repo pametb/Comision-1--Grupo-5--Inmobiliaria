@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package comision1.grupo5.inmobiliaria;
+package comision1.grupo5.inmobiliaria.clases;
 
 /**
  *
@@ -64,6 +64,11 @@ public class Persona {
 
     public void setId_persona(int id_persona) {
         this.id_persona = id_persona;
+    }
+
+    @Override
+    public String toString() {
+        return id_persona+" "+dni+" "+nombre+" "+celular; //To change body of generated methods, choose Tools | Templates.
     }
 
     
