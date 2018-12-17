@@ -1,5 +1,5 @@
 
-package comision1.grupo5.inmobiliaria.ventanas;
+package comision1.grupo5.inmobiliaria.Vistas;
 
 import comision1.grupo5.inmobiliaria.Clases.Conexion;
 import comision1.grupo5.inmobiliaria.Clases.Persona;
